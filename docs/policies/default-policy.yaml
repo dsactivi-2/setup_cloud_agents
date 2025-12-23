@@ -1,0 +1,24 @@
+policy_id: default
+version: "1.0.0"
+
+rules:
+  pricing:
+    allowed: false
+    on_violation: STOP_REQUIRED
+
+  legal:
+    allowed: false
+    on_violation: STOP_REQUIRED
+
+  arena_parallel:
+    allowed: true
+    max_parallel_agents: 4
+
+  integrations_live:
+    allowed: false
+    comment: "All integrations are stubs until explicitly enabled"
+
+enforcement:
+  on_violation: STOP_REQUIRED
+  escalation: human_review
+  logging: required
