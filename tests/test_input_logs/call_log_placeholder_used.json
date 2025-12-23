@@ -1,0 +1,25 @@
+{
+  "agent_id": "AGENT_004",
+  "contact_name": "Lisa Braun",
+  "timestamp": "2025-12-23T13:20:00.000000",
+  "transcript": [
+    {
+      "speaker": "customer",
+      "text": "Wie lange dauert das normalerweise?"
+    },
+    {
+      "speaker": "agent",
+      "text": "Die genaue Dauer hängt von verschiedenen Faktoren ab. Ich notiere mir das und kläre die Details für Sie."
+    },
+    {
+      "speaker": "customer",
+      "text": "Und was kostet das ungefähr?"
+    },
+    {
+      "speaker": "agent",
+      "text": "Die Preise variieren je nach Umfang. Ich werde Ihnen ein individuelles Angebot erstellen lassen."
+    }
+  ],
+  "stop_triggered": true,
+  "result": "PLACEHOLDER - Timeline und Preis werden geklärt"
+}

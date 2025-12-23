@@ -1,0 +1,25 @@
+{
+  "agent_id": "AGENT_002",
+  "contact_name": "Anna Schmidt",
+  "timestamp": "2025-12-23T11:15:00.000000",
+  "transcript": [
+    {
+      "speaker": "customer",
+      "text": "Guten Tag, was kostet Ihr Premium-Paket?"
+    },
+    {
+      "speaker": "agent",
+      "text": "Das Premium-Paket kostet 299 Euro pro Monat."
+    },
+    {
+      "speaker": "customer",
+      "text": "Das ist aber teuer!"
+    },
+    {
+      "speaker": "agent",
+      "text": "Ja, aber dafür bekommen Sie alle Features inklusive."
+    }
+  ],
+  "stop_triggered": false,
+  "result": "LEAD_CAPTURE - Kunde interessiert"
+}

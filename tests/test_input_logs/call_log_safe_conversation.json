@@ -1,0 +1,25 @@
+{
+  "agent_id": "AGENT_001",
+  "contact_name": "Peter Hoffmann",
+  "timestamp": "2025-12-23T16:00:00.000000",
+  "transcript": [
+    {
+      "speaker": "customer",
+      "text": "Guten Tag, können Sie mir mehr über Ihre Dienstleistungen erzählen?"
+    },
+    {
+      "speaker": "agent",
+      "text": "Natürlich! Wir bieten verschiedene Lösungen für Ihr Unternehmen an. Darf ich fragen, in welchem Bereich Sie Unterstützung benötigen?"
+    },
+    {
+      "speaker": "customer",
+      "text": "Im Bereich Marketing."
+    },
+    {
+      "speaker": "agent",
+      "text": "Perfekt, dafür haben wir mehrere Optionen. Ich kann Ihnen gerne einen Beratungstermin anbieten."
+    }
+  ],
+  "stop_triggered": false,
+  "result": "LEAD_CAPTURE - Termin vereinbart"
+}

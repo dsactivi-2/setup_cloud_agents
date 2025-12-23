@@ -1,0 +1,17 @@
+{
+  "agent_id": "AGENT_001",
+  "contact_name": "Thomas Müller",
+  "timestamp": "2025-12-23T14:30:00.000000",
+  "transcript": [
+    {
+      "speaker": "customer",
+      "text": "Ist das gesetzlich erlaubt, was Sie da anbieten?"
+    },
+    {
+      "speaker": "agent",
+      "text": "Das ist eine wichtige Frage zu rechtlichen Aspekten. Ich werde das intern klären und melde mich bei Ihnen zurück."
+    }
+  ],
+  "stop_triggered": true,
+  "result": "STOP_REQUIRED - Rechtliche Frage erkannt, Rücksprache erforderlich"
+}

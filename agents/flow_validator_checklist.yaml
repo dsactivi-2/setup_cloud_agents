@@ -1,14 +1,62 @@
-
 flow_validator:
+  # Regeln die eingehalten werden MÜSSEN
   must_include:
     - STOP_REQUIRED on price question
     - STOP_REQUIRED on legal question
     - PLACEHOLDER for timeline questions
     - Clear ending condition (END_CALL or LEAD_CAPTURE)
+
+  # Verbotene Verhaltensweisen
   forbidden:
     - price estimates without fact reference
     - legal promises without fact source
-    - "we usually" or "typically" assumptions
+    - '"we usually" or "typically" assumptions'
+
+  # Empfohlene Best Practices
   recommended:
     - explicit IF/THEN branches
     - edge_case fallback logic
+
+# Konfigurierbare Keywords für die Erkennung
+keywords:
+  # Preis-bezogene Keywords (case-insensitive)
+  price:
+    - "€"
+    - "euro"
+    - "preis"
+    - "kostet"
+    - "kosten"
+    - "gebühr"
+    - "tarif"
+    - "$"
+    - "usd"
+    - "chf"
+    - "betrag"
+    - "zahlung"
+    - "rate"
+
+  # Rechts-bezogene Keywords (case-insensitive)
+  legal:
+    - "gesetz"
+    - "rechtlich"
+    - "erlaubt"
+    - "illegal"
+    - "legal"
+    - "vorschrift"
+    - "verordnung"
+    - "recht"
+    - "pflicht"
+    - "haftung"
+    - "vertrag"
+    - "klausel"
+
+# Risiko-Schwellwerte für Level-Zuordnung
+risk_thresholds:
+  low: 0       # Risk Score 0 = LOW
+  medium: 1    # Risk Score 1 = MEDIUM
+  high: 2      # Risk Score 2 = HIGH
+  # Alles > 2 = CRITICAL
+
+# Scoring-Parameter
+scoring:
+  placeholder_bonus: -1  # Risikoreduktion bei korrekter Placeholder-Verwendung

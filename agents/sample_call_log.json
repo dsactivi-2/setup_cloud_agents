@@ -1,0 +1,25 @@
+{
+  "agent_id": "AGENT_001",
+  "contact_name": "Max Mustermann",
+  "timestamp": "2025-12-23T10:30:00.000000",
+  "transcript": [
+    {
+      "speaker": "customer",
+      "text": "Guten Tag, ich hätte eine Frage zu Ihrem Angebot."
+    },
+    {
+      "speaker": "agent",
+      "text": "Guten Tag! Wie kann ich Ihnen helfen?"
+    },
+    {
+      "speaker": "customer",
+      "text": "Was kostet das bei Ihnen ungefähr?"
+    },
+    {
+      "speaker": "agent",
+      "text": "Das hängt individuell von Ihren Anforderungen ab. Ich kläre das intern und melde mich bei Ihnen."
+    }
+  ],
+  "stop_triggered": true,
+  "result": "STOP_REQUIRED - Preisfrage erkannt, Rücksprache erforderlich"
+}

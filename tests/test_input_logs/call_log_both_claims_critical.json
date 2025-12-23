@@ -1,0 +1,25 @@
+{
+  "agent_id": "AGENT_003",
+  "contact_name": "Maria Weber",
+  "timestamp": "2025-12-23T09:45:00.000000",
+  "transcript": [
+    {
+      "speaker": "customer",
+      "text": "Was kostet das und ist das legal?"
+    },
+    {
+      "speaker": "agent",
+      "text": "Das kostet 500 Euro und ist natürlich gesetzlich völlig in Ordnung. Das ist rechtlich einwandfrei."
+    },
+    {
+      "speaker": "customer",
+      "text": "Sind Sie sicher?"
+    },
+    {
+      "speaker": "agent",
+      "text": "Absolut, vertrauen Sie mir!"
+    }
+  ],
+  "stop_triggered": false,
+  "result": "LEAD_CAPTURE - Abschluss"
+}
