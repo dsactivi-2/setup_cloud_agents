@@ -7,8 +7,10 @@ import express from "express";
 import { createHealthRouter } from "./api/health.js";
 import { createTaskRouter } from "./api/tasks.js";
 import { createAuditRouter } from "./api/audit.js";
+import { createEnforcementRouter } from "./api/enforcement.js";
 import { initDatabase } from "./db/database.js";
 import { initQueue } from "./queue/queue.js";
+import { createEnforcementGate } from "./audit/enforcementGate.js";
 
 const PORT = process.env.PORT ?? 3000;
 
@@ -23,14 +25,19 @@ async function main() {
   const queue = initQueue();
   console.log("✅ Queue initialized (mode:", queue.mode, ")");
 
+  // Initialize enforcement gate (HARD STOP enforcement)
+  const gate = createEnforcementGate(db);
+  console.log("✅ Enforcement Gate active (STOP decisions are BLOCKING)");
+
   // Create Express app
   const app = express();
   app.use(express.json());
 
   // Mount routers
   app.use("/health", createHealthRouter(db, queue));
-  app.use("/api/tasks", createTaskRouter(db, queue));
+  app.use("/api/tasks", createTaskRouter(db, queue, gate));
   app.use("/api/audit", createAuditRouter(db));
+  app.use("/api/enforcement", createEnforcementRouter(gate));
 
   // Root endpoint
   app.get("/", (_req, res) => {
@@ -47,11 +54,14 @@ async function main() {
   app.listen(PORT, () => {
     console.log(`✅ Server running on http://localhost:${PORT}`);
     console.log("📋 Endpoints:");
-    console.log("   GET  /           - Service info");
-    console.log("   GET  /health     - Health check");
-    console.log("   POST /api/tasks  - Create task");
-    console.log("   GET  /api/tasks  - List tasks");
-    console.log("   GET  /api/audit  - Audit log");
+    console.log("   GET  /              - Service info");
+    console.log("   GET  /health        - Health check");
+    console.log("   POST /api/tasks     - Create task");
+    console.log("   GET  /api/tasks     - List tasks");
+    console.log("   GET  /api/audit     - Audit log");
+    console.log("   GET  /api/enforcement/blocked  - Blocked tasks (STOP)");
+    console.log("   POST /api/enforcement/approve  - Human approval");
+    console.log("   POST /api/enforcement/reject   - Human rejection");
   });
 }
 
