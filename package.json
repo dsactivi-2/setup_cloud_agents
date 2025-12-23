@@ -1,0 +1,32 @@
+{
+  "name": "code-cloud-agents",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Supervised AI system with Engineering Lead Supervisor and Cloud Assistant",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/index.js",
+    "test": "node --test tests/**/*.test.ts",
+    "db:migrate": "tsx src/db/migrate.ts",
+    "db:health": "tsx src/db/health.ts",
+    "queue:status": "tsx src/queue/status.ts",
+    "lint": "echo 'No linter configured yet'"
+  },
+  "dependencies": {
+    "better-sqlite3": "^11.0.0",
+    "express": "^4.19.2",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.11",
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.12.12",
+    "tsx": "^4.16.2",
+    "typescript": "^5.5.4"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

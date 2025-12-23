@@ -1,0 +1,60 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "title": "SupervisorDecision",
+  "description": "Schema for Engineering Lead Supervisor decisions",
+  "required": [
+    "decision",
+    "final_status",
+    "risk_level",
+    "verified_artefacts",
+    "missing_invalid_parts",
+    "required_next_action"
+  ],
+  "properties": {
+    "decision": {
+      "type": "string",
+      "enum": ["APPROVED", "STOP_REQUIRED"],
+      "description": "The supervisor's decision"
+    },
+    "final_status": {
+      "type": "string",
+      "enum": ["COMPLETE", "COMPLETE_WITH_GAPS", "STOP_REQUIRED"],
+      "description": "Final status of the work"
+    },
+    "risk_level": {
+      "type": "string",
+      "enum": ["LOW", "MEDIUM", "HIGH", "CRITICAL"],
+      "description": "Assessed risk level"
+    },
+    "stop_score": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100,
+      "description": "Computed stop score (0-100)"
+    },
+    "verified_artefacts": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "List of verified artefacts (files, tests, configs)"
+    },
+    "missing_invalid_parts": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "List of missing or invalid parts"
+    },
+    "required_next_action": {
+      "type": "string",
+      "description": "Explicit next action required"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Decision timestamp"
+    },
+    "supervisor_id": {
+      "type": "string",
+      "description": "Identifier of the supervisor making the decision"
+    }
+  }
+}
