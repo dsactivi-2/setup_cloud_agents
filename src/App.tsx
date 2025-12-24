@@ -29,7 +29,23 @@ import {
   LogOut,
   Settings as SettingsIcon,
 } from 'lucide-react';
-import { toast } from 'sonner@2.0.3';
+import { toast } from 'sonner';
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from './components/ui/dialog';
+import { Label } from './components/ui/label';
+import { Switch } from './components/ui/switch';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from './components/ui/select';
 
 interface Agent {
   id: string;
@@ -137,6 +153,13 @@ export default function App() {
   const [dialogOpen, setDialogOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [currentTab, setCurrentTab] = useState('dashboard');
+  const [configureAgentId, setConfigureAgentId] = useState<string | null>(null);
+  const [agentSettings, setAgentSettings] = useState({
+    autoRestart: true,
+    logLevel: 'info',
+    maxRetries: '3',
+    timeout: '30',
+  });
 
   const handleStartAgent = (id: string) => {
     setAgents(
@@ -177,8 +200,14 @@ export default function App() {
   };
 
   const handleConfigureAgent = (id: string) => {
-    const agent = agents.find((a) => a.id === id);
-    toast.info(`Opening configuration for ${agent?.name}`);
+    setConfigureAgentId(id);
+  };
+
+  const configuredAgent = agents.find((a) => a.id === configureAgentId);
+
+  const handleSaveAgentSettings = () => {
+    toast.success(`Settings saved for ${configuredAgent?.name}`);
+    setConfigureAgentId(null);
   };
 
   const handleDeleteAgent = (id: string) => {
@@ -456,6 +485,79 @@ export default function App() {
         onOpenChange={setDialogOpen}
         onCreate={handleCreateAgent}
       />
+
+      {/* Agent Settings Dialog */}
+      <Dialog open={!!configureAgentId} onOpenChange={(open) => !open && setConfigureAgentId(null)}>
+        <DialogContent className="sm:max-w-md">
+          <DialogHeader>
+            <DialogTitle>Configure {configuredAgent?.name}</DialogTitle>
+            <DialogDescription>
+              Adjust settings for this agent
+            </DialogDescription>
+          </DialogHeader>
+          <div className="space-y-6 py-4">
+            <div className="flex items-center justify-between">
+              <div>
+                <Label>Auto Restart</Label>
+                <p className="text-sm text-muted-foreground">
+                  Automatically restart on failure
+                </p>
+              </div>
+              <Switch
+                checked={agentSettings.autoRestart}
+                onCheckedChange={(checked) =>
+                  setAgentSettings({ ...agentSettings, autoRestart: checked })
+                }
+              />
+            </div>
+            <div className="space-y-2">
+              <Label>Log Level</Label>
+              <Select
+                value={agentSettings.logLevel}
+                onValueChange={(value) =>
+                  setAgentSettings({ ...agentSettings, logLevel: value })
+                }
+              >
+                <SelectTrigger>
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="debug">Debug</SelectItem>
+                  <SelectItem value="info">Info</SelectItem>
+                  <SelectItem value="warning">Warning</SelectItem>
+                  <SelectItem value="error">Error</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+            <div className="space-y-2">
+              <Label>Max Retries</Label>
+              <Input
+                type="number"
+                value={agentSettings.maxRetries}
+                onChange={(e) =>
+                  setAgentSettings({ ...agentSettings, maxRetries: e.target.value })
+                }
+              />
+            </div>
+            <div className="space-y-2">
+              <Label>Timeout (seconds)</Label>
+              <Input
+                type="number"
+                value={agentSettings.timeout}
+                onChange={(e) =>
+                  setAgentSettings({ ...agentSettings, timeout: e.target.value })
+                }
+              />
+            </div>
+          </div>
+          <div className="flex justify-end gap-2">
+            <Button variant="outline" onClick={() => setConfigureAgentId(null)}>
+              Cancel
+            </Button>
+            <Button onClick={handleSaveAgentSettings}>Save Settings</Button>
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
