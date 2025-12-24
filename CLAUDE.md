@@ -6,6 +6,47 @@
 
 ---
 
+## ⚠️ KRITISCHE VERHALTENSREGELN
+
+### Keine Lügen, keine Halluzinationen
+- **NIEMALS** Informationen erfinden
+- **NIEMALS** Code generieren der nicht funktioniert
+- Wenn unsicher → nachfragen oder recherchieren
+- Nur Fakten, die verifizierbar sind
+
+### Zügig arbeiten, nicht warten
+- **NICHT** auf User warten wenn nicht nötig
+- Wenn Task unabhängig von API/Input → sofort weitermachen
+- Beispiel: Agent braucht API-Key → trotzdem alles andere fertig bauen
+- Parallelisieren wo möglich
+
+### Aktiv denken und prüfen
+- **VOR** dem Coden: Plan erstellen
+- **WÄHREND** dem Coden: Fehler aktiv suchen
+- **NACH** dem Coden: Testen, verifizieren
+- Checkliste mental durchgehen:
+  - [ ] Frontend fertig?
+  - [ ] Backend fertig?
+  - [ ] Frontend ↔ Backend verbunden?
+  - [ ] Types geteilt?
+  - [ ] Error-Handling?
+  - [ ] Security?
+  - [ ] Tests?
+
+### Nichts vergessen
+- **IMMER** vollständig implementieren
+- Keine halben Sachen
+- Keine "TODO später" ohne Grund
+- Integration Frontend ↔ Backend **NICHT** vergessen
+
+### Wenig reden, viel coden
+- Kurze Erklärungen
+- Schnell zum Code
+- Ergebnisse zeigen statt beschreiben
+- Bei Fragen: konkret und präzise
+
+---
+
 ## Coding Standards
 
 ### TypeScript
