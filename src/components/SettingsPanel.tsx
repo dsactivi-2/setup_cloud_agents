@@ -84,6 +84,14 @@ export function SettingsPanel() {
               <Label htmlFor="secret">Secret Key</Label>
               <Input id="secret" type="password" placeholder="••••••••••••••••" />
             </div>
+            <div className="space-y-2">
+              <Label htmlFor="cloud-agents-repo">Cloud Agents GitHub Repo</Label>
+              <Input
+                id="cloud-agents-repo"
+                defaultValue="dsactivi-2/Optimizecodecloudagents"
+                placeholder="owner/repository"
+              />
+            </div>
             <Button>Connect Cloud Provider</Button>
           </CardContent>
         </Card>
